@@ -1,0 +1,33 @@
+<%= form_for(@file) do |f| %>
+  <% if @file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@file.errors.count, "error") %> prohibited this file from being saved:</h2>
+
+      <ul>
+      <% @file.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :media_file_name %><br>
+    <%= f.text_field :media_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :media_content_type %><br>
+    <%= f.text_field :media_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :media_file_size %><br>
+    <%= f.number_field :media_file_size %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

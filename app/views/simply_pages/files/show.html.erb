@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @file.title %>
+</p>
+
+<p>
+  <strong>Media file name:</strong>
+  <%= @file.media_file_name %>
+</p>
+
+<p>
+  <strong>Media content type:</strong>
+  <%= @file.media_content_type %>
+</p>
+
+<p>
+  <strong>Media file size:</strong>
+  <%= @file.media_file_size %>
+</p>
+
+<%= link_to 'Edit', edit_file_path(@file) %> |
+<%= link_to 'Back', files_path %>
