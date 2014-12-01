@@ -15,3 +15,8 @@
     background-color: #e6e6e6;
     background-image: none;
 }
+
+body [class^="icon-"],
+body [class*=" icon-"] {
+    background-image: url("/assets/glyphicons-halflings.png");
+}

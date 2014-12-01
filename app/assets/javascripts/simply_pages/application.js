@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require simply_pages/jquery.ui.all
+//= require simply_pages/bootstrap
+//= require simply_pages/wysihtml5
 //= require_tree .
-//= require_tree ./bootstrap-wysihtml5
