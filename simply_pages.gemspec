@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Simply Pages is a Rails Engine to provide minimal functionality for editable HTML content & media and WYSIWYG editing."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.1.8"
