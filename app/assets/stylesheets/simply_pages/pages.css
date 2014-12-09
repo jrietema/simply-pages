@@ -22,19 +22,19 @@ body [class*=" icon-"] {
 }
 
 /* Fancytree Dialogs */
-#coruscope
+body
 .fancytree-container
 .fancytree-node {
     position: relative;
     padding-right: 34px; }
-#coruscope
+body
 .fancytree-container
 .fancytree-node .node-actions a {
     position: relative;
     left: 0;
     top: -4px;
     opacity: 0.6; }
-#coruscope
+body
 .fancytree-container
 .fancytree-node .node-actions a:hover {
     opacity: 1; }
@@ -63,3 +63,79 @@ img.fullsize {
     margin: 0 auto; }
 .bootstrap-wysihtml5-insert-image-modal .image_orientation_select {
     max-width: 50%; }
+
+ul.list {
+    margin: 0;
+    list-style: none; }
+ul.list .item {
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    border: 1px solid #dddddd; }
+ul.list .item:hover {
+    background-color: whitesmoke; }
+ul.list .item .toggle {
+    float: left;
+    height: 16px;
+    width: 16px;
+    padding: 8px 0;
+}
+ul.list .item .toggle.open a {
+    background-image: url("/assets/icons.gif");
+    background-position: -32px -80px; }
+ul.list .item .toggle a {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background: url("/assets/icons.gif") 0 -80px no-repeat; }
+ul.list .item .toggle a span {
+    display: none; }
+ul.list .item .icon {
+    float: left; }
+ul.list .item .icon.draft {
+    background: url("/assets/icons.gif"); }
+ul.list .item .item-content {
+    margin-left: 32px; }
+ul.list .item .item-content a.item-label {
+    color: black; }
+ul.list .item .btn-group {
+    float: right; }
+ul.list li ul {
+    list-style: none;
+    margin: 0 0 0 28px; }
+ul.list .icon {
+    width: 16px;
+    height: 16px;
+    padding-left: 8px;
+    background: url("/assets/icons.gif") 8px 0 no-repeat; }
+ul.list .icon .dragger {
+    width: 16px;
+    height: 16px;
+    background: url("/assets/icons.gif");
+    cursor: move;
+    display: none;
+}
+ul.list .icon .dragger span {
+    display: none; }
+ul.list .icon:hover .dragger {
+    display: block; }
+ul.list div.category {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 11px;
+    line-height: 11px;
+    border: 1px solid #dddddd;
+    padding: 2px 5px;
+    background-color: white;
+    border-radius: 3px;
+    border-left-width: 7px; }
+
+.item-title {
+    color: black; }
+.item-title a {
+    color: black; }
+
+.item-meta {
+    font-size: 11px;
+    line-height: 14px; }

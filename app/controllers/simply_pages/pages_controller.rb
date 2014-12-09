@@ -48,6 +48,13 @@ module SimplyPages
       redirect_to pages_url, notice: 'Page was successfully destroyed.'
     end
 
+    def reorder
+      (params[:page] || []).each_with_index do |id, index|
+        Page.where(id: id).update_all(position: index)
+      end
+      render nothing: true
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_page
