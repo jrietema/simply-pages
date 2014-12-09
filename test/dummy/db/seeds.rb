@@ -13,7 +13,7 @@ puts "Created #{img2.inspect}"
 # Page
 content = <<HTML
 <h1>Welcome, Tester!</h1>
-<img src='/assets/simply_pages/files/1/question_key.resized.jpg'></img>
+<img src="/assets/simply_pages/files/1/question_key.resized.jpg" class="float-left" alt="">
 <p>Here you can satisfy all you testing needs!</p>
 HTML
 page = SimplyPages::Page.create(title: 'Welcome', slug: 'welcome', content: content)
