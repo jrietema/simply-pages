@@ -5,15 +5,6 @@
 
 var xhrFetchingImages;
 
-wysiHelpers = {
-  getImageTemplate: function() {
-    /* this is what goes in the wysiwyg content after the image has been chosen */
-    var tmpl;
-    tmpl = _.template("<img class='<%= klass %>' src='<%= url %>' alt='<%= caption %>'>");
-    return tmpl;
-  }
-};
-
 bootWysiOverrides = {
   initInsertImage: function(toolbar) {
     var self = this;
@@ -22,7 +13,7 @@ bootWysiOverrides = {
     var insertButton = insertImageModal.find('a.btn-primary');
     var initialValue = urlInput.val();
 
-    var jsonSource = document.location.pathname.match(/^.*sites\/[0-9]+/i) + '/groups/images.json';
+    var jsonSource = '<%= SimplyPages::Engine.routes.url_helpers.files_path(format: :json) %>';
     
     var chooser = insertImageModal.find('.image_chooser.images');
     var chooserSave = insertImageModal.find('.insert_image_save');
@@ -35,7 +26,7 @@ bootWysiOverrides = {
     // get a fancytree chooser going
     // TODO: this get's called once for each wysiwyg on the page.  we could
     //       be smarter and cache the results after call 1 and use them later.
-    // enableFancychooser(chooser, jsonSource);
+    enableFancychooser(chooser, jsonSource);
 
     var getDataFromChosen = function(el) {
        var chosen = el || chooser.find('.fancytree-active');
@@ -171,7 +162,7 @@ $(function() {
     }
   };
 
-  // $('.tip').tooltip();
+  $('.tip').tooltip();
   $('textarea.wysi').each(function() {
     $(this).wysihtml5($.extend(wysiwygOptions, {html:true, color:false, stylesheets:[]}));
   });

@@ -1,0 +1,1 @@
+<%= array_to_file_json(@items).html_safe %>

@@ -13,11 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20141128162802) do
 
+  create_table "simply_pages_file_groups", force: true do |t|
+    t.string  "title"
+    t.integer "parent_id"
+    t.integer "position"
+    t.integer "children_count", default: 0, null: false
+    t.integer "lft",                        null: false
+    t.integer "rgt",                        null: false
+  end
+
   create_table "simply_pages_files", force: true do |t|
     t.string   "title"
+    t.string   "caption"
     t.string   "media_file_name"
     t.string   "media_content_type"
     t.integer  "media_file_size"
+    t.integer  "file_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +37,11 @@ ActiveRecord::Schema.define(version: 20141128162802) do
     t.string   "title"
     t.string   "slug"
     t.text     "content"
+    t.integer  "parent_id"
+    t.integer  "position"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "children_count", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

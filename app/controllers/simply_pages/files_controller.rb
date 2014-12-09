@@ -6,7 +6,17 @@ module SimplyPages
 
     # GET /files
     def index
-      @files = File.all
+      @node_id = params[:node].blank? ? nil : SimplyPages::FileGroup.find(params[:node]).id
+      @group = SimplyPages::FileGroup.where(parent_id: @node_id).all
+      @items = @group + SimplyPages::File.where(file_group_id: @node_id).all
+      respond_to do |format|
+        format.html do
+          render :action => :index, :layout => false
+        end
+        format.json do
+          render partial: 'grouped', layout: false
+        end
+      end
     end
 
     # GET /files/1
@@ -57,6 +67,10 @@ module SimplyPages
       # Only allow a trusted parameter "white list" through.
       def file_params
         params.require(:file).permit(:title, :media_file_name, :media_content_type, :media_file_size)
+      end
+
+      def groups_by_parent
+        @groups = FileGroup.group_by(&:parent_id)
       end
   end
 end

@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     simply_pages (0.0.1)
+      awesome_nested_set
       jquery-rails
       paperclip
       rails (~> 4.1.8)
@@ -36,6 +37,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    awesome_nested_set (3.0.1)
+      activerecord (>= 4.0.0, < 5)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)

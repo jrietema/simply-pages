@@ -15,4 +15,13 @@
 //= require simply_pages/jquery.ui.all
 //= require simply_pages/bootstrap
 //= require simply_pages/wysihtml5
+//= require simply_pages/bootstrap-wysihtml5
+//= require simply_pages/underscore
+//= require simply_pages/jquery.cookie
+//= require simply_pages/fancytree/jquery.fancytree
+//= require simply_pages/fancytree/jquery.fancytree.dnd
+//= require simply_pages/fancytree/jquery.fancytree.persist
+//= require simply_pages/image_upload_select_wysihtml5_helpers
+//= require simply_pages/image_upload_select_wysihtml5
+//= require simply_pages/fancytree/custom.fancytree
 //= require_tree .

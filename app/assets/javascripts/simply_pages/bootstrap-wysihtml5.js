@@ -62,7 +62,6 @@
 
         "image": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
-            /*
             // Include custom image chooser modal
             return "<li>" +
                 "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>" +
@@ -100,7 +99,7 @@
                 "</div>" +
                 "<a class='btn' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='icon-picture'></i></a>" +
                 "</li>";
-            */
+            /*
             return "<li>" +
               "<div class='bootstrap-wysihtml5-insert-image-modal modal hide fade'>" +
                 "<div class='modal-header'>" +
@@ -117,6 +116,7 @@
               "</div>" +
               "<a class='btn" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='icon-picture'></i></a>" +
             "</li>";
+            */
         },
 
         "html": function(locale, options) {
