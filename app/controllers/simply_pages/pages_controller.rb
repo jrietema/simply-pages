@@ -36,7 +36,7 @@ module SimplyPages
     # PATCH/PUT /pages/1
     def update
       if @page.update(page_params)
-        redirect_to @page, notice: 'Page was successfully updated.'
+        redirect_to pages_url, notice: 'Page was successfully updated.'
       else
         render :edit
       end

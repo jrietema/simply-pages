@@ -11,20 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="control-group">
+    <%= f.label :title, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug %>
+
+  <div class="control-group row">
+    <div class="span4">
+      <%= f.label :slug, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :slug %>
+      </div>
+    </div>
+    <% unless @page.new_record? %>
+    <div class="span4">
+      <%= f.label 'Path', class: 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag :path, page_path(@page), disabled: true %>
+      </div>
+    </div>
+    <div class="span4">
+      <%= link_to 'View', page_path(@page), class: 'btn', target: '_blank', style: 'margin-top: 20px;' %>
+    </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+  <div class="control-group">
+    <%= f.label :content, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group form-actions">
+    <%= f.submit f.object.new_record? ? 'Create Page' : 'Save Changes', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', pages_path, class: 'btn' %>
   </div>
 <% end %>
 <%= javascript_tag do %>
