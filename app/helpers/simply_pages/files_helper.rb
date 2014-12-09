@@ -4,9 +4,9 @@ module SimplyPages
     def array_to_file_json(ary)
       ary.map do |item|
         json_attr = {}
-        json_attr['title'] = item.title
         json_attr['key'] = item.id
         json_attr['folder'] = item.folder?
+        json_attr['lazy'] = true if item.folder?
         json_attr['href'] = case item
                               when File
                                 edit_file_path(item.id)
@@ -15,13 +15,18 @@ module SimplyPages
                               else
                                 ''
                             end
-        if item.is_a?(SimplyPages::File)
-          json_attr['class'] = 'image-data'
-          json_attr['data-type'] = 'image'
-          json_attr['data-caption'] = item.caption
-          json_attr['data-url'] = item.media.url(:original)
-          json_attr['data-url2'] = item.media.url(:resized)
-          json_attr['src'] = item.media.url(:thumb)
+        json_attr['title'] = if item.is_a?(SimplyPages::File)
+          content_tag(:span,
+                      content_tag(:img, '', src: item.media.url(:thumb), class: 'fullsize', alt: nil) + item.title,
+                      class: 'image-data',
+                      data: { url: item.media.url(:original),
+                              url2: item.media.url(:resized),
+                              caption: item.caption,
+                              type: 'image'
+                      }
+          )
+        else
+          item.title
         end
         json_attr
       end.to_json

@@ -20,3 +20,46 @@ body [class^="icon-"],
 body [class*=" icon-"] {
     background-image: url("/assets/glyphicons-halflings.png");
 }
+
+/* Fancytree Dialogs */
+#coruscope
+.fancytree-container
+.fancytree-node {
+    position: relative;
+    padding-right: 34px; }
+#coruscope
+.fancytree-container
+.fancytree-node .node-actions a {
+    position: relative;
+    left: 0;
+    top: -4px;
+    opacity: 0.6; }
+#coruscope
+.fancytree-container
+.fancytree-node .node-actions a:hover {
+    opacity: 1; }
+
+img.fullsize {
+    position: absolute;
+    left: -26px;
+    top: 2px;
+    width: auto !important;
+    height: auto;
+    max-height: 18px; }
+
+.bootstrap-wysihtml5-insert-image-modal {
+    padding: 0 16px; }
+.bootstrap-wysihtml5-insert-image-modal label {
+    margin-top: 0.33em; }
+.bootstrap-wysihtml5-insert-image-modal label > input[type='radio'] {
+    margin-right: 0.5em;
+    margin-top: -3px; }
+.bootstrap-wysihtml5-insert-image-modal .image_chooser {
+    max-height: 240px;
+    overflow-y: auto; }
+.bootstrap-wysihtml5-insert-image-modal .image_chooser_preview {
+    max-height: 240px;
+    max-width: 480px;
+    margin: 0 auto; }
+.bootstrap-wysihtml5-insert-image-modal .image_orientation_select {
+    max-width: 50%; }

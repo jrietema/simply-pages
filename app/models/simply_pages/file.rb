@@ -10,7 +10,7 @@ class SimplyPages::File < ActiveRecord::Base
                                               resized: '640x480'
                                           )},
                     path: ':rails_root/public/assets/:class/:id/:basename.:style.:extension',
-                    url: '/assets/sites/:class/:id/:basename.:style.:extension'
+                    url: '/assets/:class/:id/:basename.:style.:extension'
 
   validates_attachment_presence :media
   validates :media_file_name,
