@@ -11,23 +11,70 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="control-group">
+    <%= f.label :title, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :media_file_name %><br>
-    <%= f.text_field :media_file_name %>
+  <div id="imagePreview" class="">
+      <a href="#" class="thumbnail">
+        <% if @file.media.nil? %>
+            <%= image_tag(image_path('missing_still.png'), size: @file.media.styles[:resized].geometry.gsub(/[<>#]/,'')) %>
+        <% elsif @file.is_image? == false %>
+            <%# document icon %>
+        <% else %>
+            <%= image_tag(@file.media.url(:resized), size: @file.media.styles[:resized].geometry.gsub(/[<>#]/,'') ) %>
+        <% end %>
+      </a>
+      <div class="control-group">
+        <%= f.label 'Media File', class: "control-label" %>
+        <div class="controls">
+          <%= f.file_field :media, label: 'Media File' %>
+        </div>
+      </div>
+      <%= javascript_tag do %>
+          function updateImagePreview(imageInput) {
+            if(imageInput.files && imageInput.files[0]) {
+              var file = new FileReader();
+              file.onload = function(e) {
+                $('#imagePreview img').attr('src', e.target.result);
+              }
+              var f = imageInput.files[0];
+              file.readAsDataURL(f);
+              $('#file_media_file_name').val(f.name);
+              $('#file_media_content_type').val(f.type);
+              $('#file_media_file_size').val(f.size);
+            }
+          }
+          $('#imagePreview input').change(function(){ updateImagePreview(this); });
+      <% end %>
   </div>
-  <div class="field">
-    <%= f.label :media_content_type %><br>
-    <%= f.text_field :media_content_type %>
+
+  <% unless @file.media_file_name.blank? %>
+  <div id="#mediaData" class="row">
+    <div class="control-group span4">
+      <%= f.label :media_file_name, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :media_file_name, disabled: true %>
+      </div>
+    </div>
+    <div class="control-group span4">
+      <%= f.label :media_content_type, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :media_content_type, disabled: true %>
+      </div>
+    </div>
+    <div class="control-group span4">
+      <%= f.label :media_file_size, class: "control-label" %>
+      <div class="controls">
+        <%= f.number_field :media_file_size, disabled: true %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :media_file_size %><br>
-    <%= f.number_field :media_file_size %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <% end %>
+  <div class="control-group form-actions">
+    <%= f.submit f.object.new_record? ? 'Create File' : 'Save Changes', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', files_path, class: 'btn' %>
   </div>
 <% end %>

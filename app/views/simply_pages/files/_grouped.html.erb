@@ -1,6 +1,6 @@
 <li id="<%= grouped_dom_id(grouped) %>">
   <div class="item<%= grouped.is_image? ? ' img' : '' %>">
-    <% if grouped.folder? %>
+    <% if grouped.folder? && grouped.children.size > 0 %>
     <div class="toggle">
       <%= link_to content_tag(:span, 'Toggle'), files_path(node: grouped.id), remote: true %>
     </div>

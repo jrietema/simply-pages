@@ -5,6 +5,8 @@ module SimplyPages
     before_action :set_file, only: [:show, :edit, :update, :destroy]
 
     # GET /files
+    # Renders the top-tier file groups and contents in html, and
+    # per-node sublists in js/json format for ajax widgets/requests
     def index
       @node = params[:node].blank? ? nil : SimplyPages::FileGroup.find(params[:node])
       @node_id = !@node.nil? ? @node.id : nil
@@ -12,9 +14,11 @@ module SimplyPages
       @items = @group + SimplyPages::File.where(file_group_id: @node_id).all
       respond_to do |format|
         format.html do
+          # request the 'whole' list
           render :action => :index
         end
         format.js do
+          # ajax sub-list request
           if @node.nil?
             render nothing: true
           else
@@ -22,6 +26,7 @@ module SimplyPages
           end
         end
         format.json do
+          # json data for file chooser (fancychooser)
           render partial: 'grouped', layout: false
         end
       end

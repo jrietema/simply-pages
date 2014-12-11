@@ -14,5 +14,12 @@ module SimplyPages
     def grouped_dom_id(obj)
       "#{obj.class.name.underscore.split('/').last}_#{obj.id}"
     end
+
+    def group_options_for_parent(obj)
+      obj = nil unless obj.is_a?(SimplyPages::FileGroup)
+      options = ['- (top)',nil]
+      options + nested_set_options(SimplyPages::FileGroup, obj) {|i| "#{' -' * i.level} #{i.title}"}
+    end
+
   end
 end

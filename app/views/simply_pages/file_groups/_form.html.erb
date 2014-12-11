@@ -1,0 +1,40 @@
+<%= form_for(@file_group) do |f| %>
+    <% if @file_group.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@file_group.errors.count, "error") %> prohibited this folder from being saved:</h2>
+
+          <ul>
+            <% @file_group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :title, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group span4">
+        <%= f.label :parent_id, class: "control-label" %>
+        <div class="controls">
+          <%= f.select :parent_id, group_options_for_parent(@file_group) %>
+        </div>
+      </div>
+      <div class="control-group span4">
+        <%= f.label :current_parent, class: "control-label" %>
+        <div class="controls">
+          <%= f.text_field :parent_title, disabled: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group form-actions">
+      <%= f.submit f.object.new_record? ? 'Create Folder' : 'Save Changes', class: 'btn btn-primary' %>
+      <%= link_to 'Cancel', files_path, class: 'btn' %>
+    </div>
+<% end %>

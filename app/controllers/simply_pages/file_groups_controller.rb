@@ -4,7 +4,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
 
   # GET /files/new
   def new
-    @file_group = FileGroup.new
+    @file_group = SimplyPages::FileGroup.new
   end
 
   # GET /files/1/edit
@@ -13,10 +13,10 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
 
   # POST /files
   def create
-    @file_group = FileGroup.new(file_params)
+    @file_group = SimplyPages::FileGroup.new(file_params)
 
     if @file_group.save
-      redirect_to @file_group, notice: 'Folder was successfully created.'
+      redirect_to files_url, notice: 'Folder was successfully created.'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
   # PATCH/PUT /files/1
   def update
     if @file_group.update(file_params)
-      redirect_to @file_group, notice: 'Folder was successfully updated.'
+      redirect_to files_url, notice: 'Folder was successfully updated.'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_file_group
-    @file_group = FileGroup.find(params[:id])
+    @file_group = SimplyPages::FileGroup.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

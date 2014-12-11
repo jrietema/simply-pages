@@ -13,4 +13,7 @@ class SimplyPages::FileGroup < ActiveRecord::Base
     false
   end
 
+  def parent_title
+    parent.nil? ? '' : parent.title
+  end
 end
