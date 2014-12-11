@@ -1,0 +1,7 @@
+/* toggle-able sublists */
+.list .item + .children {
+    display: none;
+}
+.list .item.open + .children {
+    display: block;
+}

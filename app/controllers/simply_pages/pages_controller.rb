@@ -45,7 +45,7 @@ module SimplyPages
     # DELETE /pages/1
     def destroy
       @page.destroy
-      redirect_to pages_url, notice: 'Page was successfully destroyed.'
+      redirect_to pages_url, notice: 'Page was successfully deleted.'
     end
 
     def reorder

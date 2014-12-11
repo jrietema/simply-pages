@@ -6,12 +6,20 @@ module SimplyPages
 
     # GET /files
     def index
-      @node_id = params[:node].blank? ? nil : SimplyPages::FileGroup.find(params[:node]).id
-      @group = SimplyPages::FileGroup.where(parent_id: @node_id).all
+      @node = params[:node].blank? ? nil : SimplyPages::FileGroup.find(params[:node])
+      @node_id = !@node.nil? ? @node.id : nil
+      @group = @node.is_a?(SimplyPages::FileGroup) ? @node.children : SimplyPages::FileGroup.where(parent_id: @node_id).all
       @items = @group + SimplyPages::File.where(file_group_id: @node_id).all
       respond_to do |format|
         format.html do
-          render :action => :index, :layout => false
+          render :action => :index
+        end
+        format.js do
+          if @node.nil?
+            render nothing: true
+          else
+            render partial: 'grouped', layout: false, collection: @items
+          end
         end
         format.json do
           render partial: 'grouped', layout: false
@@ -55,7 +63,7 @@ module SimplyPages
     # DELETE /files/1
     def destroy
       @file.destroy
-      redirect_to files_url, notice: 'File was successfully destroyed.'
+      redirect_to files_url, notice: 'File was successfully deleted.'
     end
 
     private

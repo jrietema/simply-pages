@@ -9,4 +9,8 @@ class SimplyPages::FileGroup < ActiveRecord::Base
     true
   end
 
+  def is_image?
+    false
+  end
+
 end

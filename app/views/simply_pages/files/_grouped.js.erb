@@ -1,0 +1,3 @@
+$('#<%= grouped_dom_id(@node) %> .children').html('<%= escape_javascript(render partial: 'grouped.html', collection: @items) %>');
+$('#<%= grouped_dom_id(@node) %> .toggle a').attr('href','#');
+$('#<%= grouped_dom_id(@node) %> .toggle a').click(function(e){e.preventDefault();});

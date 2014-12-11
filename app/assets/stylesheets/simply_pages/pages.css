@@ -82,7 +82,8 @@ ul.list .item .toggle {
     width: 16px;
     padding: 8px 0;
 }
-ul.list .item .toggle.open a {
+ul.list .item .toggle.open a,
+ul.list .item.open .toggle a {
     background-image: url("/assets/icons.gif");
     background-position: -32px -80px; }
 ul.list .item .toggle a {
@@ -98,6 +99,9 @@ ul.list .item .icon.draft {
     background: url("/assets/icons.gif"); }
 ul.list .item .item-content {
     margin-left: 32px; }
+ul.list .item.img .item-content {
+    margin-left: 48px;
+}
 ul.list .item .item-content a.item-label {
     color: black; }
 ul.list .item .btn-group {
@@ -110,12 +114,25 @@ ul.list .icon {
     height: 16px;
     padding-left: 8px;
     background: url("/assets/icons.gif") 8px 0 no-repeat; }
+ul.list .img .icon {
+    width: 32px;
+    height: 24px;
+    margin-left: 8px;
+    padding-left: 0;
+    background: transparent none;
+}
 ul.list .icon .dragger {
     width: 16px;
     height: 16px;
     background: url("/assets/icons.gif");
     cursor: move;
     display: none;
+}
+ul.list .img .icon .dragger {
+    background: none;
+    display: block;
+    height: 24px;
+    width: 32px;
 }
 ul.list .icon .dragger span {
     display: none; }

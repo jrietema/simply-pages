@@ -10,5 +10,9 @@ module SimplyPages
         content_tag(:div, html.html_safe, class: "alert #{alert.blank? ? 'alert-info' : 'alert-error'}")
       end
     end
+
+    def grouped_dom_id(obj)
+      "#{obj.class.name.underscore.split('/').last}_#{obj.id}"
+    end
   end
 end
