@@ -3,6 +3,7 @@ require_dependency "simply_pages/application_controller"
 module SimplyPages
   class PagesController < ApplicationController
     before_action :set_page, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate!, except: :show
 
     # GET /pages
     def index

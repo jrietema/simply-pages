@@ -53,7 +53,7 @@
         html:         false,
         color:        false,
         style:        true,
-        stylesheets:  []
+        stylesheets:  [<%= stylesheet_paths.join(", ").html_safe %>]
     });
     $('#page_content').css('font-family','inherit');
 <% end %>
