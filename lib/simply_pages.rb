@@ -19,6 +19,8 @@ module SimplyPages
 
   mattr_accessor :navigation_list_class
 
+  mattr_accessor :navigation_item_class
+
   mattr_accessor :navigation_active_item_class
 
   def self.included_stylesheets
@@ -44,6 +46,10 @@ module SimplyPages
 
   def self.redirection_url
     @@redirection_url ||= 'sessions#new'
+  end
+
+  def self.navigation_item_class
+    @@navigation_item_class || ''
   end
 
   def self.navigation_active_item_class

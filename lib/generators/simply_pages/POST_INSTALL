@@ -1,0 +1,14 @@
+SimplyPages has been installed to your Rails application!
+
+You can now:
+
+  1. run the migrations:
+     rake db:migrate
+
+  2. review and configure the initializer under
+     config/initializers/simply_pages.rb
+
+  3. configure public render routes for your pages
+     ... to be documented
+
+Go to your app path and /simply_pages/pages to start creating content!
