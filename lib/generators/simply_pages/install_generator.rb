@@ -16,8 +16,7 @@ module SimplyPages
       end
 
       def add_routes
-        route "\n# SimplyPages Engine"
-        route 'mount SimplyPages::Engine => "/simply_pages"'
+        route "# SimplyPages Engine\n  # refer to https://github.com/jrietema/simply_pages for more info\n  mount SimplyPages::Engine => \"/simply_pages\""
       end
 
       def post_install_notes
