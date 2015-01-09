@@ -21,8 +21,8 @@ SimplyPages.included_stylesheets = 'application.css'
 # SimplyPages.current_authenticatable = 'current_user'
 
 # Specify to URL to redirect upon authentication failure
-# (Default 'sessions#new')
-# SimplyPages.redirection_url = 'sessions#new'
+# (Default '/sessions/new')
+# SimplyPages.redirection_url = '/sessions/new'
 
 # SimplyPages Nav Building
 # Navigation building using the simply_pages.nav helper may be configured

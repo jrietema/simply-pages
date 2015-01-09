@@ -10,6 +10,15 @@ class ApplicationController < ActionController::Base
 
   # Devise helper mocking
   def current_user
-    session[:user]
+    puts "\n\n\n@@@ CALLING current_user !!!\n@@@\n"
+    if session[:user]
+      user = User.new
+      user.name = session[:user]
+      user.admin(true) if session[:admin]
+      puts "User: #{user.inspect} | admin? = #{user.admin?}"
+      user
+    else
+      nil
+    end
   end
 end

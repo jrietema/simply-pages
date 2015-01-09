@@ -45,7 +45,7 @@ module SimplyPages
   end
 
   def self.redirection_url
-    @@redirection_url ||= 'sessions#new'
+    @@redirection_url ||= '/sessions/new'
   end
 
   def self.navigation_item_class
