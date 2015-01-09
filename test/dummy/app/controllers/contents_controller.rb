@@ -4,4 +4,8 @@ class ContentsController < ApplicationController
     @contents = Content.all
   end
 
+  def cms
+
+  end
+
 end

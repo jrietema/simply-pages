@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'contents#index'
 
+  get 'cms', controller: :contents, action: :cms
+
   # mock Devise/Authentication
   get 'sessions/new', controller: :sessions, action: :new
   post 'sign_in', controller: :sessions, action: :create
