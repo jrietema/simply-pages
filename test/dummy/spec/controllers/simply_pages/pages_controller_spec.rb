@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+# main_app helpers
+def main_app
+  Rails.application.class.routes.url_helpers
+end
+
 RSpec.describe SimplyPages::PagesController do
   describe 'PUT #update' do
     context 'without a logged in user' do
