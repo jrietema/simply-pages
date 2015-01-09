@@ -3,7 +3,17 @@ require_dependency "simply_pages/application_controller"
 module SimplyPages
   class PagesController < ApplicationController
     before_action :set_page, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate!, except: :show
+    before_action :authenticate!, except: :public_render
+
+    # this renders the page from the application
+    def public_render
+      @page = Page.where(slug: params[:slug]).first
+      if @page.nil?
+        render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+      else
+        render :show, layout: 'layouts/application'
+      end
+    end
 
     # GET /pages
     def index

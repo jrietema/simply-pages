@@ -1,6 +1,7 @@
+
 SimplyPages has been installed to your Rails application!
 
-You can now:
+You can now update your app:
 
   1. run the migrations:
      rake db:migrate
@@ -9,6 +10,18 @@ You can now:
      config/initializers/simply_pages.rb
 
   3. configure public render routes for your pages
-     ... to be documented
+     Check config/routes.rb to make sure the SimplyPages public render
+     route is not intercepted and fits your application's requirements.
+
+SimplyPages provides the simply_pages_nav helper for generating page navigation, for instance
+in your layout use:
+
+<ul>
+ <li><%= link_to 'Home', root_path, class: 'home' %></li>
+ <%= simply_pages_nav %>
+</ul>
+
+The helper will accept alternate tag types (other than the default li) as argument.
 
 Go to your app path and /simply_pages/pages to start creating content!
+

@@ -21,5 +21,11 @@ module SimplyPages
     initializer 'simply_pages.asset.paths' do |app|
       app.config.assets.paths << "#{app.root}/app/assets/fonts"
     end
+
+    initializer 'simply_pages.navigation_helper' do |app|
+      ActiveSupport.on_load :action_controller do
+        helper SimplyPages::NavigationHelper
+      end
+    end
   end
 end

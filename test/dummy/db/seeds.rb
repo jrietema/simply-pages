@@ -20,4 +20,14 @@ page = SimplyPages::Page.create(title: 'Welcome', slug: 'welcome', content: cont
 puts "Created #{page}"
 page2 = SimplyPages::Page.create(title: 'About', slug: 'about', content: '<em>TODO: write something...</em>')
 puts "Created #{page2}"
-
+# Content
+content = Content.create(title: 'A new Beginning', contents: <<TEXT
+Join us as we embark on a new journey with this platform and many exciting developments to come. Do you have any suggestions or comments you want to make to help us shape this vision?
+TEXT
+)
+puts "Created #{content}"
+content = Content.create(title: 'Newest News', contents: <<TEXT
+Follow our lead story from where we last set off and discover the latest developments along with main protagonists and their opinions and reflections.
+TEXT
+ )
+puts "Created #{content}"

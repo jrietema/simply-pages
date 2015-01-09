@@ -8,7 +8,14 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="main_nav">
+  <ul>
+    <%= simply_pages_nav %>
+  </ul>
+</div>
+<div id="content">
+  <%= yield %>
+</div>
 
 </body>
 </html>
