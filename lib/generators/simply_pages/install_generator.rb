@@ -17,7 +17,7 @@ module SimplyPages
 
       def add_routes
         route "# SimplyPages Engine\n  # refer to https://github.com/jrietema/simply_pages for more info\n  mount SimplyPages::Engine => \"/simply_pages\"\n"
-        append_to_file "config/routes.rb" do
+        insert_into_file "config/routes.rb", before: "\nend" do
           <<PUBLIC_RENDER
   # SimplyPages public render
   #   Note: either move this route to where it will not be intercepted by previous catch-alls,
@@ -26,7 +26,6 @@ module SimplyPages
   #   # get '/page/:slug', to: 'simply_pages/pages#public_render', as: :simply_pages_render
   #
   get ':slug', to: 'simply_pages/pages#public_render', as: :simply_pages_render
-
 PUBLIC_RENDER
         end
       end
