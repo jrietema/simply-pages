@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<ul class="nav nav-tabs">
+  <% [:pages, :files].each do |area| %>
+    <% url = url_for(controller: area, action: :index) %>
+    <li class="<%= (controller_name == area.to_s) ? 'active' : ''%>">
+      <%= link_to area.to_s.capitalize, url, target: '_self' %>
+    </li>
+  <% end %>
+</ul>
+
 <%= yield %>
 
 </body>
