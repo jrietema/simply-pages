@@ -29,11 +29,11 @@
     <div class="span4">
       <%= f.label 'Path', class: 'control-label' %>
       <div class="controls">
-        <%= text_field_tag :path, page_path(@page), disabled: true %>
+        <%= text_field_tag :path, main_app.simply_pages_render_path(@page.slug), disabled: true %>
       </div>
     </div>
-    <div class="span4">
-      <%= link_to 'View', page_path(@page), class: 'btn', target: '_blank', style: 'margin-top: 20px;' %>
+    <div class="span2">
+      <%= link_to 'View', main_app.simply_pages_render_path(@page.slug), class: 'btn', target: '_blank', style: 'margin-top: 20px;' %>
     </div>
     <% end %>
   </div>

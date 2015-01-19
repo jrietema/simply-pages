@@ -11,7 +11,7 @@ module SimplyPages
       if @page.nil?
         render file: "#{Rails.root}/public/404.html", layout: false, status: 404
       else
-        render :show, layout: 'layouts/application'
+        render :show, layout: '/layouts/application'
       end
     end
 
