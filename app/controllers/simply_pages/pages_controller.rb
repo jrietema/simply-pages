@@ -38,7 +38,7 @@ module SimplyPages
       @page = Page.new(page_params)
 
       if @page.save
-        redirect_to @page, notice: 'Page was successfully created.'
+        redirect_to pages_url, notice: "Page '#{@page.title}' was successfully created."
       else
         render :new
       end
@@ -47,7 +47,7 @@ module SimplyPages
     # PATCH/PUT /pages/1
     def update
       if @page.update(page_params)
-        redirect_to pages_url, notice: 'Page was successfully updated.'
+        redirect_to pages_url, notice: "Page '#{@page.title}' was successfully updated."
       else
         render :edit
       end
@@ -56,7 +56,7 @@ module SimplyPages
     # DELETE /pages/1
     def destroy
       @page.destroy
-      redirect_to pages_url, notice: 'Page was successfully deleted.'
+      redirect_to pages_url, notice: "Page '#{@page.title}' was successfully deleted."
     end
 
     def reorder

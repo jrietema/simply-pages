@@ -50,7 +50,7 @@ module SimplyPages
       @file = File.new(file_params)
 
       if @file.save
-        redirect_to @file, notice: 'File was successfully created.'
+        redirect_to files_path, notice: "File '#{@file.title}' was successfully created."
       else
         render :new
       end
@@ -59,7 +59,7 @@ module SimplyPages
     # PATCH/PUT /files/1
     def update
       if @file.update(file_params)
-        redirect_to @file, notice: 'File was successfully updated.'
+        redirect_to files_path, notice: "File '#{@file.title}' was successfully updated."
       else
         render :edit
       end
@@ -68,7 +68,7 @@ module SimplyPages
     # DELETE /files/1
     def destroy
       @file.destroy
-      redirect_to files_url, notice: 'File was successfully deleted.'
+      redirect_to files_path, notice: "File '#{@file.title}' was successfully deleted."
     end
 
     private

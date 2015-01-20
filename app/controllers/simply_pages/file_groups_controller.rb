@@ -16,7 +16,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
     @file_group = SimplyPages::FileGroup.new(file_params)
 
     if @file_group.save
-      redirect_to files_url, notice: 'Folder was successfully created.'
+      redirect_to files_url, notice: "Folder '#{@file_group.title}' was successfully created."
     else
       render :new
     end
@@ -25,7 +25,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
   # PATCH/PUT /files/1
   def update
     if @file_group.update(file_params)
-      redirect_to files_url, notice: 'Folder was successfully updated.'
+      redirect_to files_url, notice: "Folder '#{@file_group.title}' was successfully updated."
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
   # DELETE /files/1
   def destroy
     @file_group.destroy
-    redirect_to files_url, notice: 'Folder was successfully deleted.'
+    redirect_to files_url, notice: "Folder '#{@file_group.title}' was successfully deleted."
   end
 
   private

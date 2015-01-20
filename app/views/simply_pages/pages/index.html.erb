@@ -19,7 +19,7 @@
          <%= link_to page.title, edit_page_path(page.id), class: 'item-label' %>
        </div>
        <div class="item-meta">
-         <%= link_to page_url(page.id), page_url(page.id), target: '_blank' %>
+         <%= link_to main_app.simply_pages_render_path(page.slug), main_app.simply_pages_render_path(page.slug), target: '_blank' %>
        </div>
      </div>
    </div>
