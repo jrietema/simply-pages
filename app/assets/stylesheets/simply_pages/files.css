@@ -5,3 +5,6 @@
 .list .item.open + .children {
     display: block;
 }
+#media_button {
+    padding-top: 25px;
+}

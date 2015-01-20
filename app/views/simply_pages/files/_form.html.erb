@@ -27,10 +27,25 @@
             <%= image_tag(@file.media.url(:resized), size: @file.media.styles[:resized].geometry.gsub(/[<>#]/,'') ) %>
         <% end %>
       </a>
-      <div class="control-group">
-        <%= f.label 'Media File', class: "control-label" %>
-        <div class="controls">
-          <%= f.file_field :media, label: 'Media File' %>
+      <h4>File Upload</h4>
+      <div class="control-group row">
+        <div id="media_button" class="span2">
+          <%= button_tag'Upload File', type: :button, class: 'btn btn-info' %>
+          <%= javascript_tag do %>
+            $('#media_button button').click(function(event){
+              $('#media_button button').toggleClass('active');
+              var uploadButton = $('#file_media');
+              uploadButton.attr('disabled', !(uploadButton.attr('disabled')));
+              uploadButton.toggleClass('btn-info');
+              event.stopPropagation();
+            });
+          <% end %>
+        </div>
+        <div id="media_upload" class="span4">
+            <%= f.label 'Media File', class: "control-label" %>
+            <div class="controls">
+              <%= f.file_field :media, label: 'Media File', disabled: true, class: 'btn' %>
+            </div>
         </div>
       </div>
       <%= javascript_tag do %>
@@ -45,6 +60,7 @@
               $('#file_media_file_name').val(f.name);
               $('#file_media_content_type').val(f.type);
               $('#file_media_file_size').val(f.size);
+              $('#dimensions').hide();
             }
           }
           $('#imagePreview input').change(function(){ updateImagePreview(this); });
@@ -52,7 +68,9 @@
   </div>
 
   <% unless @file.media_file_name.blank? %>
-  <div id="#mediaData" class="row">
+  <hr/>
+  <h4>File Data</h4>
+  <div id="mediaData" class="row">
     <div class="control-group span4">
       <%= f.label :media_file_name, class: "control-label" %>
       <div class="controls">
@@ -71,6 +89,14 @@
         <%= f.number_field :media_file_size, disabled: true %>
       </div>
     </div>
+    <% if @file.is_image? %>
+    <div id="dimensions" class="control-group span4">
+      <%= f.label :image_dimensions, 'Original Dimensions', class: "control-label" %>
+      <div class="controls">
+        <%= text_field_tag :image_dimensions, "#{@file.image_dimensions} (resized: #{@file.resized_dimensions})", disabled: true %>
+      </div>
+    </div>
+    <% end %>
   </div>
   <% end %>
   <div class="control-group form-actions">

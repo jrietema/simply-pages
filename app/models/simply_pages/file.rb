@@ -1,11 +1,9 @@
 class SimplyPages::File < ActiveRecord::Base
 
-  IMAGE_MIMETYPES = %w(gif jpeg pjpeg png tiff).collect{|subtype| "image/#{subtype}"}
-
-  attr_accessor :dimensions
+  IMAGE_MIMETYPES = %w(gif bmp jpeg pjpeg png tiff).collect{|subtype| ["image/#{subtype}", "application/#{subtype}", "x-application/#{subtype}"]}.flatten
 
   has_attached_file :media,
-                    styles: lambda {|f| (f.instance.dimensions.blank?? { } : { original: f.instance.dimensions }).merge(
+                    styles: lambda {|f| (f.instance.image_dimensions.blank?? { } : { original: f.instance.image_dimensions }).merge(
                                               thumb: '80x60#',
                                               resized: '640x480'
                                           )},
@@ -17,6 +15,10 @@ class SimplyPages::File < ActiveRecord::Base
             presence: true
 
   do_not_validate_attachment_file_type :media
+
+  before_save :extract_dimensions
+  serialize :image_dimensions
+  serialize :resized_dimensions
 
   default_scope       -> { order 'title ASC'}
   scope :images,      -> { where(:media_content_type => IMAGE_MIMETYPES) }
@@ -33,6 +35,38 @@ class SimplyPages::File < ActiveRecord::Base
 
   def label
     title
+  end
+
+  def image_dimensions
+    format_dimensions(:image_dimensions)
+  end
+
+  def resized_dimensions
+    format_dimensions(:resized_dimensions)
+  end
+
+  private
+
+  def format_dimensions(accessor)
+    dim = read_attribute(accessor.to_sym)
+    case dim
+      when Array
+        dim.join('x')
+      else
+        dim.to_s
+    end
+  end
+
+  # Retrieve dimensions for image media
+  def extract_dimensions
+    return unless is_image?
+    {original: 'image_dimensions', resized: 'resized_dimensions'}.each_pair do |style, method|
+      tempfile = media.queued_for_write[style]
+      unless tempfile.nil?
+        geometry = Paperclip::Geometry.from_file(tempfile)
+        self.send("#{method}=", [geometry.width.to_i, geometry.height.to_i])
+      end
+    end
   end
 
 end

@@ -15,6 +15,8 @@ class CreateSimplyPagesFiles < ActiveRecord::Migration
       t.string :media_content_type
       t.integer :media_file_size
       t.integer :file_group_id
+      t.string :image_dimensions, limit: 30
+      t.string :resized_dimensions, limit: 30
       t.timestamps
     end
   end

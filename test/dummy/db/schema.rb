@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150109100918) do
     t.string   "media_content_type"
     t.integer  "media_file_size"
     t.integer  "file_group_id"
+    t.string   "image_dimensions",   limit: 30
+    t.string   "resized_dimensions", limit: 30
     t.datetime "created_at"
     t.datetime "updated_at"
   end
