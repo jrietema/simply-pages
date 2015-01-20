@@ -35,3 +35,15 @@ SimplyPages.included_stylesheets = 'application.css'
 # Specify the css class to decorate active link for nav building
 # (Default: 'active')
 # SimplyPages.navigation_active_item_class = 'active'
+
+# Set the Geometries for Paperclip attachment/Imagemagick resizing
+# for the two styles other than :original:
+#
+# The :resized style is used for alternative, grid-compliant rendering
+# of images (and defaults to 640x480)
+# SimplyPages.resized_image_geometry = '640x480'
+#
+# The :thumbnail style is used within the CMS UI only per default
+# (unless accessed by the main application for some reason) and
+# defaults to a '80x60#' geometry
+# SimplyPages.thumbail_image_geometry = '80x60#'

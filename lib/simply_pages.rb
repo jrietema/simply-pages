@@ -23,6 +23,14 @@ module SimplyPages
 
   mattr_accessor :navigation_active_item_class
 
+  # Geometry for Paperclip image attachment resizing
+  # for the :resized style
+  mattr_accessor :resized_image_geometry
+
+  # Geometry for Paperclip image attachment resizing
+  # for the :thumbnail style
+  mattr_accessor :thumbnail_image_geometry
+
   def self.included_stylesheets
     case @@included_stylesheets ||= ''
       when Array
@@ -54,5 +62,13 @@ module SimplyPages
 
   def self.navigation_active_item_class
     @@navigation_active_item_class || 'active'
+  end
+
+  def self.resized_image_geometry
+    @@resized_image_geometry || '640x480'
+  end
+
+  def self.thumbail_image_geometry
+    @@thumbnail_image_geometry || '80x60#'
   end
 end

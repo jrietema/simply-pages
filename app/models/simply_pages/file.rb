@@ -4,8 +4,8 @@ class SimplyPages::File < ActiveRecord::Base
 
   has_attached_file :media,
                     styles: lambda {|f| (f.instance.image_dimensions.blank?? { } : { original: f.instance.image_dimensions }).merge(
-                                              thumb: '80x60#',
-                                              resized: '640x480'
+                                              thumb: SimplyPages.thumbail_image_geometry,
+                                              resized: SimplyPages.resized_image_geometry
                                           )},
                     path: ':rails_root/public/assets/:class/:id/:basename.:style.:extension',
                     url: '/assets/:class/:id/:basename.:style.:extension'
