@@ -4,6 +4,9 @@ module SimplyPages
   # stylesheets to include into wysithml5
   mattr_accessor :included_stylesheets
 
+  # the application layout to render the pages in
+  mattr_accessor :application_layout
+
   # the model that is authenticated on login
   # SimplyPages will demand an authenticate_#{model}
   # and current_#{model} method for Controllers as
@@ -38,6 +41,10 @@ module SimplyPages
       else
         @@included_stylesheets.to_s.split(/[^-\w_.]+/)
     end
+  end
+
+  def self.application_layout
+    @@application_layout || 'application'
   end
 
   def self.authenticatable_model

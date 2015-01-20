@@ -4,6 +4,10 @@
 # Default is to apply no stylesheets
 SimplyPages.included_stylesheets = 'application.css'
 
+# Application layout to use for rendering the pages from within
+# the application (Default 'application')
+# SimplyPages.application_layout = 'application'
+
 # SimplyPages Authentication
 # SimplyPages authentication for CMS access will work out of the box
 # with Devise but can be configured to fit other authentication schemes
