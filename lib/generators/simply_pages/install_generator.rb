@@ -11,10 +11,6 @@ module SimplyPages
         copy_file "initializer.rb", "config/initializers/simply_pages.rb"
       end
 
-      def copy_migrations
-        rake "simply_pages:install:migrations"
-      end
-
       def add_routes
         route "# SimplyPages Engine\n  # refer to https://github.com/jrietema/simply_pages for more info\n  mount SimplyPages::Engine => \"/simply_pages\"\n"
         insert_into_file "config/routes.rb", before: "\nend" do
