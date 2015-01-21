@@ -19,7 +19,7 @@
   </div>
   <div id="imagePreview" class="">
       <a href="#" class="thumbnail">
-        <% if @file.media.nil? %>
+        <% if @file.media.nil? || @file.new_record? %>
             <%= image_tag(image_path('missing_still.png'), size: @file.media.styles[:resized].geometry.gsub(/[<>#]/,'')) %>
         <% elsif @file.is_image? == false %>
             <%# document icon %>
@@ -58,6 +58,7 @@
               var f = imageInput.files[0];
               file.readAsDataURL(f);
               $('#file_media_file_name').val(f.name);
+              $('#file_media_file_name').attr('disabled');
               $('#file_media_content_type').val(f.type);
               $('#file_media_file_size').val(f.size);
               $('#dimensions').hide();

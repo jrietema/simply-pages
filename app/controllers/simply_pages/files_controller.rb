@@ -79,7 +79,7 @@ module SimplyPages
 
       # Only allow a trusted parameter "white list" through.
       def file_params
-        params.require(:file).permit(:title, :media_file_name, :media_content_type, :media_file_size)
+        params.require(:file).permit(:title, :media, :media_file_name, :media_content_type, :media_file_size)
       end
 
       def groups_by_parent
