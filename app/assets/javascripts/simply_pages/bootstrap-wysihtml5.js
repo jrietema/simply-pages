@@ -88,8 +88,8 @@
                 "</div>" +
                 "<div class=\"orientation_select\" style=\"display: none;\">" +
                 "<form class=\"formatted\"><div class=\"control-group\">" +
-                "<label for=\"image_orientation_select\">Bildausrichtung</label>" +
-                "<select name=\"image_orientation_select\" class=\"xnarrow image_orientation_select\"><option value=\"float-left\">links</option><option value=\"centered\">zentriert</option><option value=\"float-right\">rechts</option></select>" +
+                "<label for=\"image_orientation_select\">Image Alignment</label>" +
+                "<select name=\"image_orientation_select\" class=\"xnarrow image_orientation_select\"><option value=\"float-left\">left</option><option value=\"centered\">centered</option><option value=\"float-right\">right</option></select>" +
                 "</div></form>" +
                 "</div>" +
                 "<div class='modal-footer'>" +
