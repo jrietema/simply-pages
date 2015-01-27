@@ -134,6 +134,9 @@ ul.list .img .icon .dragger {
     height: 24px;
     width: 32px;
 }
+ul.list .folder .icon {
+    background: url("/assets/icons.gif") 8px -16px no-repeat;
+}
 ul.list .icon .dragger span {
     display: none; }
 ul.list .icon:hover .dragger {

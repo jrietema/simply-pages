@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109100918) do
+ActiveRecord::Schema.define(version: 20150127120541) do
 
-  create_table "contents", force: true do |t|
-    t.string   "title"
+  create_table "contents", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "simply_pages_file_groups", force: true do |t|
-    t.string  "title"
+  create_table "simply_pages_file_groups", force: :cascade do |t|
+    t.string  "title",          limit: 255
     t.integer "parent_id"
     t.integer "position"
-    t.integer "children_count", default: 0, null: false
-    t.integer "lft",                        null: false
-    t.integer "rgt",                        null: false
+    t.integer "children_count",             default: 0, null: false
+    t.integer "lft",                                    null: false
+    t.integer "rgt",                                    null: false
   end
 
-  create_table "simply_pages_files", force: true do |t|
-    t.string   "title"
-    t.string   "caption"
-    t.string   "media_file_name"
-    t.string   "media_content_type"
+  create_table "simply_pages_files", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.string   "caption",            limit: 255
+    t.string   "media_file_name",    limit: 255
+    t.string   "media_content_type", limit: 255
     t.integer  "media_file_size"
     t.integer  "file_group_id"
     t.string   "image_dimensions",   limit: 30
@@ -42,17 +42,18 @@ ActiveRecord::Schema.define(version: 20150109100918) do
     t.datetime "updated_at"
   end
 
-  create_table "simply_pages_pages", force: true do |t|
-    t.string   "title"
-    t.string   "slug"
+  create_table "simply_pages_pages", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.string   "slug",           limit: 255
     t.text     "content"
     t.integer  "parent_id"
     t.integer  "position"
-    t.integer  "lft",                        null: false
-    t.integer  "rgt",                        null: false
-    t.integer  "children_count", default: 0, null: false
+    t.integer  "lft",                                    null: false
+    t.integer  "rgt",                                    null: false
+    t.integer  "children_count",             default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "depth",                      default: 0
   end
 
 end

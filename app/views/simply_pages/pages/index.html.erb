@@ -10,7 +10,9 @@
        </div>
      </div>
      <div class="btn-group">
+       <% if page.depth < SimplyPages.navigation_depth %>
        <%= link_to 'new sub-page', new_page_path(parent_id: page.id), class: 'btn btn-small' %>
+       <% end %>
        <%= link_to 'edit', edit_page_path(page.id), class: 'btn btn-small' %>
        <%= link_to 'delete', page_path(page.id, method: :delete), class: 'btn btn-small btn-danger', rel: 'nofollow', data: {confirm: 'Delete the page "' + page.title + '" permanently?'} %>
      </div>

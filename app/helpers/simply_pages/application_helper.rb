@@ -17,7 +17,7 @@ module SimplyPages
 
     def group_options_for_parent(obj)
       obj = nil unless obj.is_a?(SimplyPages::FileGroup)
-      options = ['- (top)',nil]
+      options = [['- (top)',nil]]
       options + nested_set_options(SimplyPages::FileGroup, obj) {|i| "#{' -' * i.level} #{i.title}"}
     end
 

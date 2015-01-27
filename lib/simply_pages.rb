@@ -20,6 +20,10 @@ module SimplyPages
 
   mattr_accessor :redirection_url
 
+  # Define identifiers for different navigations - Pages will
+  # belong to one of these [:main], [:main,:footer], [:main, :side, :footer]
+  mattr_accessor :navigation_types
+
   mattr_accessor :navigation_list_class
 
   mattr_accessor :navigation_item_class
@@ -61,6 +65,14 @@ module SimplyPages
 
   def self.redirection_url
     @@redirection_url ||= '/sessions/new'
+  end
+
+  def self.navigation_types
+    @@navigation_types || [:main]
+  end
+
+  def self.navigation_depth
+    0
   end
 
   def self.navigation_item_class

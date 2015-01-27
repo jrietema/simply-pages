@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+# RVM Directives for Gemset/Ruby specification
+#ruby=2.2-head
+#ruby-gemset=simply_pages
+
 # Declare your gem's dependencies in simply_pages.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
