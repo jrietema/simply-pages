@@ -1,7 +1,17 @@
 
 <%= notifications %>
+<% @pages.each do |nav| %>
+<% navtype = nav.first %>
+<div class="navigation_header well well-small">
+  <%= navtype.to_s.capitalize %>&nbsp;Navigation Pages
+  <div class="btn-group">
+    <div class="item-title">
+      <%= link_to "create a new #{navtype.to_s.capitalize} Page", new_page_path(navigation_type: SimplyPages::Page.nav_index(navtype)), class: 'btn btn-small' %>
+    </div>
+  </div>
+</div>
 <ul class="list sortable ui-sortable">
-<% @pages.each do |page| %>
+ <% nav.last.each do |page| %>
  <li id="page_<%= page.id %>">
    <div class="item">
      <div class="icon published">
@@ -28,12 +38,4 @@
  </li>
 <% end %>
 </ul>
-<ul class="list">
-  <li class="item">
-    <div class="item-content">
-      <div class="item-title">
-        <%= link_to 'create a new Page', new_page_path, class: 'btn btn-small' %>
-      </div>
-    </div>
-  </li>
-</ul>
+<% end %>

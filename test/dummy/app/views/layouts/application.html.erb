@@ -11,11 +11,16 @@
 <div id="main_nav">
   <ul>
     <li><%= link_to 'CMS', 'cms', target: '_top' %></li>
-    <%= simply_pages_nav %>
+    <%= simply_pages_nav :main %>
   </ul>
 </div>
 <div id="content">
   <%= yield %>
+</div>
+<div id="footer">
+  <ul>
+    <%= simply_pages_nav :footer %>
+  </ul>
 </div>
 
 </body>

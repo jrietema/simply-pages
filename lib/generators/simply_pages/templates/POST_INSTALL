@@ -9,16 +9,21 @@ You can now update your app:
   2. review and configure the initializer under
      config/initializers/simply_pages.rb
 
+     For instance, define the navigation_types you'll want to have
+     pages for:
+     SimplyPages.navigation_types = [:main, :footer]
+
   3. configure public render routes for your pages
      Check config/routes.rb to make sure the SimplyPages public render
      route is not intercepted and fits your application's requirements.
+
 
 SimplyPages provides the simply_pages_nav helper for generating page navigation, for instance
 in your layout use:
 
 <ul>
  <li><%= link_to 'Home', root_path, class: 'home' %></li>
- <%= simply_pages_nav %>
+ <%= simply_pages_nav :main %>
 </ul>
 
 The helper will accept alternate tag types (other than the default li) as argument.

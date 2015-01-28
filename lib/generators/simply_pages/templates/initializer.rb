@@ -29,6 +29,11 @@ SimplyPages.included_stylesheets = 'application.css'
 # SimplyPages.redirection_url = '/sessions/new'
 
 # SimplyPages Nav Building
+# Navigation types can be defined that hold separate sets of pages,
+# for instance, a main navigation, a secondary navigation, and footer navigation
+# (Default: [:main])
+# SimplyPages.navigation_types = [:main]
+
 # Navigation building using the simply_pages.nav helper may be configured
 # to utilize certain css classes for items
 

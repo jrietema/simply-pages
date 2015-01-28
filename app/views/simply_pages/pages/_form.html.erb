@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <% if SimplyPages.navigation_types.size > 0 %>
+    <div class="control-group">
+      <%= f.label :navigation_type, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :navigation_type, SimplyPages.navigation_types.inject([]){|c,n| c << [n.to_s.capitalize, c.size]} %>
+      </div>
+    </div>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :title, class: 'control-label' %>
     <div class="controls">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127120541) do
+ActiveRecord::Schema.define(version: 20150128121119) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -43,17 +43,18 @@ ActiveRecord::Schema.define(version: 20150127120541) do
   end
 
   create_table "simply_pages_pages", force: :cascade do |t|
-    t.string   "title",          limit: 255
-    t.string   "slug",           limit: 255
+    t.string   "title",           limit: 255
+    t.string   "slug",            limit: 255
     t.text     "content"
     t.integer  "parent_id"
     t.integer  "position"
-    t.integer  "lft",                                    null: false
-    t.integer  "rgt",                                    null: false
-    t.integer  "children_count",             default: 0, null: false
+    t.integer  "lft",                                     null: false
+    t.integer  "rgt",                                     null: false
+    t.integer  "children_count",              default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "depth",                      default: 0
+    t.integer  "depth",                       default: 0
+    t.integer  "navigation_type",             default: 0
   end
 
 end

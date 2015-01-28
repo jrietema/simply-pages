@@ -17,7 +17,8 @@ module SimplyPages
 
     # GET /pages
     def index
-      @pages = Page.all
+      @pages = SimplyPages.navigation_types.map{|t| [t, Page.for_nav(SimplyPages::Page.nav_index(t)).all]}
+      #@pages = Page.all
     end
 
     # GET /pages/1
@@ -27,6 +28,7 @@ module SimplyPages
     # GET /pages/new
     def new
       @page = Page.new
+      @page.navigation_type = params[:navigation_type].to_i unless params[:navigation_type].blank?
     end
 
     # GET /pages/1/edit
@@ -74,7 +76,7 @@ module SimplyPages
 
       # Only allow a trusted parameter "white list" through.
       def page_params
-        params.require(:page).permit(:title, :slug, :content)
+        params.require(:page).permit(:title, :slug, :content, :navigation_type)
       end
   end
 end

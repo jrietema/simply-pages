@@ -64,7 +64,14 @@ img.fullsize {
     margin: 0 auto; }
 .bootstrap-wysihtml5-insert-image-modal .image_orientation_select {
     max-width: 50%; }
-
+body .navigation_header {
+    padding-left: 14px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+body .navigation_header .btn-group {
+    margin-left: 20px;
+}
 ul.list {
     margin: 0;
     list-style: none; }
