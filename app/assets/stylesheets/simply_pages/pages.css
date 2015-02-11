@@ -8,7 +8,7 @@ h1, h2, h3 {
 
 body [class^="icon-"],
 body [class*=" icon-"] {
-    background-image: url("/assets/glyphicons-halflings.png");
+    background-image: url("/assets/simply_pages/glyphicons-halflings.png");
 }
 
 
@@ -91,19 +91,19 @@ ul.list .item .toggle {
 }
 ul.list .item .toggle.open a,
 ul.list .item.open .toggle a {
-    background-image: url("/assets/icons.gif");
+    background-image: url("/assets/simply_pages/icons.gif");
     background-position: -32px -80px; }
 ul.list .item .toggle a {
     display: block;
     height: 16px;
     width: 16px;
-    background: url("/assets/icons.gif") 0 -80px no-repeat; }
+    background: url("/assets/simply_pages/icons.gif") 0 -80px no-repeat; }
 ul.list .item .toggle a span {
     display: none; }
 ul.list .item .icon {
     float: left; }
 ul.list .item .icon.draft {
-    background: url("/assets/icons.gif"); }
+    background: url("/assets/simply_pages/icons.gif"); }
 ul.list .item .item-content {
     margin-left: 32px; }
 ul.list .item.img .item-content {
@@ -120,7 +120,7 @@ ul.list .icon {
     width: 16px;
     height: 16px;
     padding-left: 8px;
-    background: url("/assets/icons.gif") 8px 0 no-repeat; }
+    background: url("/assets/simply_pages/icons.gif") 8px 0 no-repeat; }
 ul.list .img .icon {
     width: 32px;
     height: 24px;
@@ -131,18 +131,19 @@ ul.list .img .icon {
 ul.list .icon .dragger {
     width: 16px;
     height: 16px;
-    background: url("/assets/icons.gif");
+    background: url("/assets/simply_pages/icons.gif");
     cursor: move;
     display: none;
 }
-ul.list .img .icon .dragger {
+ul.list .img .icon .dragger,
+ul.list .folder .icon .dragger {
     background: none;
     display: block;
     height: 24px;
     width: 32px;
 }
 ul.list .folder .icon {
-    background: url("/assets/icons.gif") 8px -16px no-repeat;
+    background: url("/assets/simply_pages/icons.gif") 8px -16px no-repeat;
 }
 ul.list .icon .dragger span {
     display: none; }
