@@ -1,6 +1,6 @@
 class SimplyPages::File < ActiveRecord::Base
 
-  IMAGE_MIMETYPES = %w(gif bmp jpeg pjpeg png tiff).collect{|subtype| ["image/#{subtype}", "application/#{subtype}", "x-application/#{subtype}"]}.flatten
+  IMAGE_MIMETYPES = %w(gif bmp jpeg jpeg png tiff).collect{|subtype| ["image/#{subtype}", "application/#{subtype}", "x-application/#{subtype}"]}.flatten
 
   has_attached_file :media,
                     styles: lambda {|f| (f.instance.image_dimensions.blank?? { } : { original: f.instance.image_dimensions }).merge(
