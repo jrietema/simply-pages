@@ -5,14 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:user] = params[:username]
-    session[:admin] = true unless params[:password].blank?
+    @user = User.new
+    @user.name = params[:username]
+    @user.admin(true) unless params[:password].blank?
+    session[:user] = @user.to_hash
     redirect_to root_path
   end
 
   def destroy
     session[:user] = nil
-    session[:admin] = false
     redirect_to root_path
   end
 

@@ -10,13 +10,6 @@ class ApplicationController < ActionController::Base
 
   # Devise helper mocking
   def current_user
-    if session[:user]
-      user = User.new
-      user.name = session[:user]
-      user.admin(true) if session[:admin]
-      user
-    else
-      nil
-    end
+    @current_user ||= User.from_hash(session[:user])
   end
 end

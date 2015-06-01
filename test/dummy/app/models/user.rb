@@ -6,7 +6,7 @@ class User
   end
 
   def name
-    @str
+    @name
   end
 
   def admin?
@@ -15,5 +15,21 @@ class User
 
   def admin(admin)
     @admin = admin
+  end
+
+  def to_hash
+    {name: name, admin: admin?}
+  end
+
+  def self.from_hash(hash)
+    case hash
+      when nil
+        nil
+      else
+        user = User.new
+        user.name = hash['name']
+        user.admin(hash['admin'])
+        user
+    end
   end
 end

@@ -2,15 +2,25 @@
 <html>
 <head>
   <title>Dummy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="identity">
+  <% if current_user.nil? %>
+  <%= link_to 'login', sessions_new_url, target: '_top' %>
+  <% else %>
+  <%= current_user.respond_to?(:name) ? current_user.name : 'unknown' %>
+  <%# Link to logout doesn't work because there is no jquery support %>
+  <%#= link_to 'logout', {controller: :sessions, action: :destroy}, method: :delete, target: '_top' %>
+  <%= link_to 'logout', '#' %>
+  <% end %>
+</div>
 
 <div id="main_nav">
   <ul>
-    <li><%= link_to 'CMS', 'cms', target: '_top' %></li>
+    <li><%= link_to 'CMS', '/cms', target: '_top' %></li>
     <%= simply_pages_nav :main %>
   </ul>
 </div>
