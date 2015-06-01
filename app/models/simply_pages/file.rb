@@ -1,6 +1,16 @@
 class SimplyPages::File < ActiveRecord::Base
 
-  IMAGE_MIMETYPES = %w(gif bmp jpeg jpeg png tiff).collect{|subtype| ["image/#{subtype}", "application/#{subtype}", "x-application/#{subtype}"]}.flatten
+  # Utilize MIME lib to verify existing mime type
+  # NOTE: image/x-ms-bmp is not covered by MIME, but since BMP files
+  # parse as this type using the unix file executable (which paperclip uses),
+  # we include it separately here to ensure BMP support.
+  IMAGE_MIMETYPES = %w(gif bmp jpeg jpeg png tiff).collect do |subtype|
+    [ "image/#{subtype}",
+      "image/x-#{subtype}",
+      "application/#{subtype}",
+      "x-application/#{subtype}"
+    ].map{|t| MIME::Types[t]}
+  end.flatten.compact.map(&:content_type).uniq + ['image/x-ms-bmp']
 
   has_attached_file :media,
                     styles: lambda {|f| (f.instance.image_dimensions.blank?? { } : { original: f.instance.image_dimensions }).merge(
