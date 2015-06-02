@@ -1,5 +1,7 @@
 class SimplyPages::File < ActiveRecord::Base
 
+  belongs_to :file_group
+
   # Utilize MIME lib to verify existing mime type
   # NOTE: image/x-ms-bmp is not covered by MIME, but since BMP files
   # parse as this type using the unix file executable (which paperclip uses),

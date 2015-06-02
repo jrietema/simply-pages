@@ -42,7 +42,7 @@ module SimplyPages
 
     # GET /files/new
     def new
-      @file = File.new
+      @file = File.new(file_group_id: file_group_id_parameter)
     end
 
     # GET /files/1/edit
@@ -93,6 +93,11 @@ module SimplyPages
 
       def groups_by_parent
         @groups = FileGroup.group_by(&:parent_id)
+      end
+
+      def file_group_id_parameter
+        value = (params[:file_group_id] || '').to_s.to_i
+        (value > 0) ? value : nil
       end
   end
 end

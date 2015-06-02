@@ -21,7 +21,7 @@
     <div class="span3">
       <%= f.label 'Group', class: "control-label" %>
       <div class="controls">
-        <%= f.select :file_group_id, options_for_select(['None',nil]+(@file_groups || []).map{|g| [g.title, g.id]}, @file.file_group_id) %>
+        <%= f.select :file_group_id, options_for_select(group_options_for_parent(nil), @file.file_group_id) %>
       </div>
     </div>
   </div>
