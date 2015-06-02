@@ -5,6 +5,12 @@
 .list .item.open + .children {
     display: block;
 }
+#file_list.list .folder .icon {
+    margin-top: 8px;
+}
+#file_list.list .folder .item-content{
+    padding-top: 8px;
+}
 #media_button {
     padding-top: 25px;
 }

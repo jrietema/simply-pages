@@ -11,10 +11,18 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :title, class: "control-label" %>
-    <div class="controls">
-      <%= f.text_field :title %>
+  <div class="control-group row">
+    <div class="span5">
+      <%= f.label :title, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="span3">
+      <%= f.label 'Group', class: "control-label" %>
+      <div class="controls">
+        <%= f.select :file_group_id, options_for_select(['None',nil]+(@file_groups || []).map{|g| [g.title, g.id]}, @file.file_group_id) %>
+      </div>
     </div>
   </div>
   <div id="imagePreview" class="">

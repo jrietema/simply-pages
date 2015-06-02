@@ -3,6 +3,7 @@ require_dependency "simply_pages/application_controller"
 module SimplyPages
   class FilesController < ApplicationController
     before_action :set_file, only: [:show, :edit, :update, :destroy]
+    before_action :init_file_groups, only: [:edit, :new]
 
     # GET /files
     # Renders the top-tier file groups and contents in html, and
@@ -77,9 +78,14 @@ module SimplyPages
         @file = File.find(params[:id])
       end
 
+      # Retrieve available FileGroups for assignment
+      def init_file_groups
+        @file_groups = FileGroup.all
+      end
+
       # Only allow a trusted parameter "white list" through.
       def file_params
-        params.require(:file).permit(:title, :media, :media_file_name, :media_content_type, :media_file_size)
+        params.require(:file).permit(:title, :media, :media_file_name, :media_content_type, :media_file_size, :file_group_id)
       end
 
       def groups_by_parent
