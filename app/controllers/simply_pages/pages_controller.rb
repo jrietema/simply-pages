@@ -2,6 +2,9 @@ require_dependency "simply_pages/application_controller"
 
 module SimplyPages
   class PagesController < ApplicationController
+
+    layout 'simply_pages/application'
+
     before_action :set_page, only: [:show, :edit, :update, :destroy]
     before_action :authenticate!, except: :public_render
 

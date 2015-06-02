@@ -1,5 +1,7 @@
 class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
 
+  layout 'simply_pages/application'
+
   before_action :set_file_group, only: [:edit, :update, :destroy]
 
   # GET /files/new

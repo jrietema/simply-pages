@@ -2,6 +2,9 @@ require_dependency "simply_pages/application_controller"
 
 module SimplyPages
   class FilesController < ApplicationController
+
+    layout 'simply_pages/application'
+
     before_action :set_file, only: [:show, :edit, :update, :destroy]
     before_action :init_file_groups, only: [:edit, :new]
 
