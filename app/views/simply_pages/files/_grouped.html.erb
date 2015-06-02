@@ -1,6 +1,6 @@
 <li id="<%= grouped_dom_id(grouped) %>">
   <div class="item<%= grouped.is_image? ? ' img' : '' %><%= grouped.folder? ? ' folder' : ''%>">
-    <% if grouped.folder? && ((grouped.children.size > 0) || (grouped.files.size > 0)) %>
+    <% if grouped.folder? && !grouped.empty? %>
     <div class="toggle">
       <%= link_to content_tag(:span, 'Toggle'), files_path(node: grouped.id), remote: true %>
     </div>
@@ -17,12 +17,14 @@
     <div class="btn-group">
       <% if grouped.is_a?(SimplyPages::File) %>
           <%= link_to 'edit', edit_file_path(grouped.id), class: 'btn btn-small' %>
-          <%= link_to 'delete', file_path(grouped.id, method: :delete), class: 'btn btn-small btn-danger', rel: 'nofollow', data: {confirm: 'Delete the file "' + grouped.title + '" permanently?'} %>
+          <%= button_to 'delete', file_path(grouped.id), class: 'btn btn-small btn-danger', rel: 'nofollow', method: :delete, data: {confirm: 'Delete the file "' + grouped.title + '" permanently?'} %>
       <% else %>
           <%= link_to 'add new file', new_file_path(file_group_id: grouped.id), class: 'btn btn-small' %>
           <%= link_to 'add sub-folder', new_file_group_path(parent_id: grouped.id), class: 'btn btn-small' %>
           <%= link_to 'edit', edit_file_group_path(grouped.id), class: 'btn btn-small' %>
-          <%= link_to 'delete', file_group_path(grouped.id, method: :delete), class: 'btn btn-small btn-danger', rel: 'nofollow', data: {confirm: 'Delete the folder "' + grouped.title + '" permanently?'} %>
+        <% if grouped.empty? %>
+          <%= button_to 'delete', file_group_path(grouped.id), class: 'btn btn-small btn-danger', rel: 'nofollow', method: :delete, data: {confirm: 'Delete the folder "' + grouped.title + '" permanently?'} %>
+        <% end %>
       <% end %>
     </div>
     <div class="item-content">

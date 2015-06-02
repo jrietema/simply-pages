@@ -35,8 +35,13 @@ class SimplyPages::FileGroupsController < SimplyPages::ApplicationController
 
   # DELETE /files/1
   def destroy
-    @file_group.destroy
-    redirect_to files_url, notice: "Folder '#{@file_group.title}' was successfully deleted."
+    notice = "Folder '#{@file_group.title}' was successfully deleted."
+    begin
+      @file_group.destroy
+    rescue StandardError
+      notice = 'Only a folder without contents may be deleted.'
+    end
+    redirect_to files_url, notice: notice
   end
 
   private

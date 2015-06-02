@@ -4,6 +4,8 @@ class SimplyPages::FileGroup < ActiveRecord::Base
 
   has_many :files
 
+  before_destroy :check_for_children
+
   # File/FileGroup compatibility method
   def folder?
     true
@@ -15,5 +17,16 @@ class SimplyPages::FileGroup < ActiveRecord::Base
 
   def parent_title
     parent.nil? ? '' : parent.title
+  end
+
+  # has no children or file contents
+  def empty?
+    (children.size == 0) && (files.all.size == 0)
+  end
+
+  private
+
+  def check_for_children
+    raise StandardError if !empty?
   end
 end

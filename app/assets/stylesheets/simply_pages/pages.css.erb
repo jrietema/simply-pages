@@ -112,7 +112,24 @@ ul.list .item.img .item-content {
 ul.list .item .item-content a.item-label {
     color: black; }
 ul.list .item .btn-group {
-    float: right; }
+    float: right;
+    width: 100px;
+}
+ul.list .item.folder .btn-group {
+  width: 290px;
+}
+ul.list .item .btn-group a:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+ul.list .btn-group form {
+  margin: 0;
+  display: inline;
+}
+ul.list .btn-group form .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 ul.list li ul {
     list-style: none;
     margin: 0 0 0 28px; }

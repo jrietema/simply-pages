@@ -43,6 +43,10 @@ class SimplyPages::File < ActiveRecord::Base
     false
   end
 
+  def empty?
+    true
+  end
+
   def label
     title
   end
